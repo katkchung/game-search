@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { Button, Grid, TextField } from "@mui/material";
 import { makeStyles } from "@material-ui/core";
-import YelpLogo from "../images/yelp_logo.svg";
+import { AppState } from "../../store/rootReducer";
+import { connect } from "react-redux";
+import {
+  getGameSearchResults,
+  setGameSearchTerm,
+} from "../../store/gameSearch/gameSearchActions";
 
 const styles = () => {
   return {
     root: {
-      margin: "16px",
-      marginTop: "0px",
+      paddingTop: "32px",
     },
     logo: {
       height: "50px",
@@ -18,25 +22,29 @@ const styles = () => {
 const useStyles = makeStyles(styles);
 
 export interface Props {
-  setCurrentSearchTerm: Function;
+  setGameSearchTerm: Function;
+  searchTerm: string;
+  getGameSearchResults: Function;
 }
 
-const AddressInput = ({ setCurrentSearchTerm }: Props) => {
+const SearchBar = ({
+  setGameSearchTerm,
+  searchTerm,
+  getGameSearchResults,
+}: Props) => {
   const classes = useStyles();
-  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [searchInput, setSearchInput] = useState<string>(searchTerm);
+  console.log("The search term", searchTerm);
 
   return (
     <div className={classes.root}>
       <Grid container alignItems="center" justifyContent="flex-start">
         <Grid item xs>
-          <img className={classes.logo} src={YelpLogo} />
-        </Grid>
-        <Grid item xs={10}>
           <TextField
-            label="Address"
+            label="Keyword/Title"
             variant="outlined"
-            value={searchTerm}
-            onChange={(event) => setSearchTerm(event?.target.value)}
+            value={searchInput}
+            onChange={(event) => setSearchInput(event?.target.value)}
             fullWidth
           />
         </Grid>
@@ -44,12 +52,13 @@ const AddressInput = ({ setCurrentSearchTerm }: Props) => {
           <Button
             variant="contained"
             onClick={() => {
-              if (searchTerm !== "") {
-                setCurrentSearchTerm(searchTerm);
+              if (searchInput !== "") {
+                getGameSearchResults(searchInput);
+                setGameSearchTerm(searchInput);
               }
             }}
           >
-            Search For CoffeeShops
+            Search
           </Button>
         </Grid>
       </Grid>
@@ -57,4 +66,13 @@ const AddressInput = ({ setCurrentSearchTerm }: Props) => {
   );
 };
 
-export default AddressInput;
+const mapStateToProps = (state: AppState) => ({
+  searchTerm: state.gameSearch.searchTerm,
+});
+
+const mapDispatchToProps = {
+  setGameSearchTerm,
+  getGameSearchResults,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
