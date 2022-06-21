@@ -45,6 +45,12 @@ const SearchBar = ({
             value={searchInput}
             onChange={(event) => setSearchInput(event?.target.value)}
             fullWidth
+            onKeyPress={(e) => {
+              if (e.key === "Enter") {
+                getGameSearchResults(searchInput);
+                setGameSearchTerm(searchInput);
+              }
+            }}
             data-testid="search-bar-input"
           />
         </Grid>
