@@ -4,7 +4,7 @@ A fake video game rental company that uses the Giant Bomb Api to search for vide
 
 ## To Run:
 
-- Change `GIANT_BOMB_KEY` to authentication tokens from Giant Bomb in `constants.ts`. I didn't include my personal keys because that seems like it could be a security thing.
+- Change `GIANT_BOMB_KEY` to authentication tokens from Giant Bomb in `resources/constants.ts`. I didn't include my personal keys because that seems like it could be a security thing.
 - If you don't have yarn installed, install it using `brew install yarn` (given that you have homebrew installed)
 - `yarn install` to install packages
 - `yarn start` Run app locally.

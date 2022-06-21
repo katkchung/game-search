@@ -2,6 +2,7 @@ import { Grid, Typography } from "@mui/material";
 import TopNav from "../../nav/TopNav";
 import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
+import beetleIcon from "../../../imgs/beetle_bug.png";
 
 const SearchPage = () => {
   return (
@@ -14,7 +15,7 @@ const SearchPage = () => {
         item
         justifyContent="center"
         alignContent="center"
-        direction="column"
+        direction="row"
         spacing={2}
         sx={{
           backgroundColor: "rgba(77, 166, 247, 0.5)",
@@ -22,7 +23,10 @@ const SearchPage = () => {
           boxShadow: "5",
         }}
       >
-        <Grid item sx={{ textAlign: "center" }}>
+        <Grid item>
+          <img style={{ height: "50px" }} src={beetleIcon} alt="Home" />
+        </Grid>
+        <Grid item>
           <Typography variant="h3"> What are we playing today? </Typography>
         </Grid>
       </Grid>

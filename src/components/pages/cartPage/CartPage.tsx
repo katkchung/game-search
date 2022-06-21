@@ -1,6 +1,7 @@
 import { Grid, Typography } from "@mui/material";
 import TopNav from "../../nav/TopNav";
 import Cart from "./Cart";
+import beetleIcon from "../../../imgs/beetle_bug.png";
 
 const CartPage = () => {
   return (
@@ -13,7 +14,7 @@ const CartPage = () => {
         item
         justifyContent="center"
         alignContent="center"
-        direction="column"
+        direction="row"
         spacing={2}
         sx={{
           backgroundColor: "rgba(77, 166, 247, 0.5)",
@@ -21,6 +22,9 @@ const CartPage = () => {
           boxShadow: "5",
         }}
       >
+        <Grid item>
+          <img style={{ height: "50px" }} src={beetleIcon} alt="Home" />
+        </Grid>
         <Grid item>
           <Typography variant="h3"> Current Items in Pack </Typography>
         </Grid>
