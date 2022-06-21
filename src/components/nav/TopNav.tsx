@@ -1,7 +1,7 @@
-import { Button, Grid, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import makeStyles from "@mui/styles/makeStyles";
-import backpackIcon from "../../imgs/icon.png";
+import backpackIcon from "../../imgs/backpack_icon.png";
 
 const styles = () => {
   return {
@@ -46,17 +46,21 @@ const TopNav = () => {
         xs
       >
         <Grid item sx={{ marginTop: "-12px", mr: "-10px" }}>
-          <Link to="/" className={classes.links}>
+          <Link to="/" className={classes.links} data-testid="top-nav-home">
             <img className={classes.icon} src={backpackIcon} alt="Home" />
           </Link>
         </Grid>
         <Grid item>
-          <Link to="/search" className={classes.links}>
+          <Link
+            to="/search"
+            className={classes.links}
+            data-testid="top-nav-search"
+          >
             <Typography variant="h5">Search</Typography>
           </Link>
         </Grid>
         <Grid item>
-          <Link to="/cart" className={classes.links}>
+          <Link to="/cart" className={classes.links} data-testid="top-nav-cart">
             <Typography variant="h5">Cart</Typography>
           </Link>
         </Grid>

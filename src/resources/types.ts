@@ -1,5 +1,6 @@
 export interface Game {
+    id: number,
     name: string,
-    shortDescription: string
+    deck: string
     driverImageUrl: string
   }

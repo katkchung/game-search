@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { Grid, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import TopNav from "../../nav/TopNav";
-import SearchBar from "../../search/SearchBar";
+import beetleBrand from "../../../imgs/beetle_brand.png";
 
 const Homepage = () => {
   return (
@@ -21,17 +21,29 @@ const Homepage = () => {
           pt: "12px",
           pb: "14px",
           boxShadow: "5",
+          height: "100%",
         }}
       >
         <Grid item>
-          <Typography variant="h3"> Welcome to Beetle's Backpack! </Typography>
+          <Typography variant="h3"> Welcome to </Typography>
+        </Grid>
+        <Grid item>
+          <img src={beetleBrand} alt="Beetle's Backpack Logo" />
         </Grid>
         <Grid item sx={{ textAlign: "center" }}>
-          <Typography variant="h6"> What are we playing today? </Typography>
+          <Typography variant="h6"> Let's get started. </Typography>
+          <Box sx={{ pt: "16px" }}>
+            <Button
+              component={Link}
+              to="/search"
+              variant="contained"
+              color="primary"
+              data-testid="start-search-button"
+            >
+              Start Search
+            </Button>
+          </Box>
         </Grid>
-      </Grid>
-      <Grid item xs={8}>
-        <SearchBar />
       </Grid>
     </Grid>
   );

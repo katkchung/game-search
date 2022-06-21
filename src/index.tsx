@@ -8,6 +8,13 @@ import { rootReducer } from "./store/rootReducer";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
+declare global {
+  interface Window {
+    Cypress: any;
+    store: any;
+  }
+}
+
 const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(thunk))
@@ -21,3 +28,7 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById("root")
 );
+
+if (window.Cypress) {
+  window.store = store;
+}

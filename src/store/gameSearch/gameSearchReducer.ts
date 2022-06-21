@@ -24,7 +24,7 @@ export const initialSearchState: {
       case 'GET_GAMES_FROM_KEYWORD': {
         return {
           ...state,
-          games: payload.games.map((game: any) => ({name: game.name, description: game.description})),
+          games: payload,
         }
 
       }
