@@ -10,7 +10,6 @@ export interface Props {
 }
 
 const Cart = ({ addedGames }: Props) => {
-  console.log("current games in cart:", addedGames);
   return (
     <Box>
       <Grid
